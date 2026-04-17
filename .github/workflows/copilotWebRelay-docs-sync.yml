@@ -1,0 +1,52 @@
+# Copilot Web Relay Documentation Sync Workflow
+#
+# このワークフローは copilotWebRelay 配下のコードが更新された際に自動的に実行され、
+# copilotWebRelay/docs ディレクトリのドキュメントを最新のソースコードに同期します。
+#
+# 参考: https://github.com/github/gh-aw/blob/main/create.md
+
+name: Sync copilotWebRelay Docs
+
+on:
+  push:
+    paths:
+      - '2.copilotWebRelay/**'
+  pull_request:
+    paths:
+      - '2.copilotWebRelay/**'
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r 2.copilotWebRelay/requirements.txt || true
+
+      - name: Generate documentation
+        run: |
+          # ここでドキュメント生成スクリプトを実行
+          # 例: python 2.copilotWebRelay/scripts/generate_docs.py
+          if [ -f 2.copilotWebRelay/scripts/generate_docs.py ]; then
+            python 2.copilotWebRelay/scripts/generate_docs.py
+          fi
+
+      - name: Commit and push docs if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add 2.copilotWebRelay/docs
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: copilotWebRelay ドキュメント自動更新'
+            git push || echo 'Push skipped (PRや権限の都合で失敗する場合があります)'
+          else
+            echo 'No documentation changes to commit.'
+          fi
