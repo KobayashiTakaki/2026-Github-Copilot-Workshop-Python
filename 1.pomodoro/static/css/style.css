@@ -1,0 +1,150 @@
+/* ポモドーロタイマー用カスタムCSS */
+body {
+  background: linear-gradient(135deg, #7c83ea 0%, #a7b8f5 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', 'Meiryo', sans-serif;
+}
+
+#app {
+  background: #f9f9fb;
+  width: 370px;
+  margin: 40px auto;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60, 60, 120, 0.18);
+  padding: 32px 24px 24px 24px;
+  box-sizing: border-box;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.window-header .title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #222;
+}
+.window-controls span {
+  margin-left: 8px;
+  color: #888;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.timer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.timer-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 16px;
+}
+.timer-circle svg {
+  position: absolute;
+  top: 0; left: 0;
+}
+.timer-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.timer-state {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.timer-time {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 2px;
+}
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.start-btn {
+  background: linear-gradient(90deg, #7c83ea 0%, #a7b8f5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(124, 131, 234, 0.08);
+  transition: background 0.2s;
+}
+.start-btn:hover {
+  background: linear-gradient(90deg, #6a72d6 0%, #8fa2e6 100%);
+}
+.reset-btn {
+  background: #fff;
+  color: #7c83ea;
+  border: 2px solid #7c83ea;
+  border-radius: 24px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.reset-btn:hover {
+  background: #f0f3ff;
+  color: #5a62b2;
+}
+
+.progress-section {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+.progress-box {
+  background: #eef1fb;
+  border-radius: 16px;
+  padding: 18px 24px 12px 24px;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+.progress-title {
+  color: #444;
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.progress-done, .progress-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.progress-count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #7c83ea;
+}
+.progress-total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4b53b3;
+}
+.progress-label {
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
