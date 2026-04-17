@@ -15,6 +15,9 @@ on:
     paths:
       - '2.copilotWebRelay/**'
 
+permissions:
+  contents: write
+
 jobs:
   sync-docs:
     runs-on: ubuntu-latest
